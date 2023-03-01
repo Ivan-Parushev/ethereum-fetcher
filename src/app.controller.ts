@@ -2,7 +2,7 @@ import { Controller, Get, Param } from '@nestjs/common';
 import RLP from 'rlp';
 import { AppService } from './app.service';
 
-@Controller('/lime')
+@Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
