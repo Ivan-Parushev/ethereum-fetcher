@@ -3,7 +3,7 @@ version: '3'
 name: ethereum-fetcher
 
 services:
-  efdataabse:
+  efdatabase:
     image: postgres:latest
     restart: always
     environment:
@@ -13,7 +13,7 @@ services:
     ports:
       - '5432:5432'
     volumes:
-      - efdataabse:/var/lib/postgresql/data
+      - efdatabase:/var/lib/postgresql/data
 
   adminer:
     image: adminer
@@ -21,7 +21,7 @@ services:
     ports:
       - 8080:8080
     depends_on:
-      - efdataabse
+      - efdatabase
 
   efservice:
     build:
@@ -32,7 +32,7 @@ services:
     ports:
       - '3000:3000'
     depends_on:
-      - efdataabse
+      - efdatabase
 
 volumes:
-  efdataabse: {}
+  efdatabase: {}

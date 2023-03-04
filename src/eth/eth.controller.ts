@@ -14,4 +14,11 @@ export class EthController {
       transactions: await this.ethService.getTransactions(tHashes),
     };
   }
+
+  @Get('/all')
+  async getAllTransactions() {
+    return {
+      transactions: await this.ethService.getAllTransactions(),
+    };
+  }
 }

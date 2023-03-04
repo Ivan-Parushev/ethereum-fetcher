@@ -14,7 +14,7 @@ export class EthService {
     private readonly ethNodeAPIService: EthNodeService,
   ) {}
 
-  async getTransactions(transactionHashes: string[]) {
+  async getTransactions(transactionHashes: string[]): Promise<Transaction[]> {
     const transactionRecords = await this.transactionsRepository.findBy({ transactionHash: In(transactionHashes) });
 
     const notFoundInDatabase = transactionHashes.filter((thash) => {
@@ -32,6 +32,10 @@ export class EthService {
     }
 
     return [...transactionRecords, ...fetchedTransactions];
+  }
+
+  async getAllTransactions(): Promise<Transaction[]> {
+    return await this.transactionsRepository.find();
   }
 
   private async fetchAndPersistTransactions(transactionHashes: string[]): Promise<Transaction[]> {
