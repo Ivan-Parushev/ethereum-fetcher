@@ -8,8 +8,10 @@ export class EthController {
   constructor(private readonly ethService: EthService, private configService: ConfigService) {}
 
   @Get('/eth/:rlphex')
-  getTransactions(@Param('rlphex') rlphex: string) {
+  async getTransactions(@Param('rlphex') rlphex: string) {
     const tHashes = decodeRlpHex(rlphex);
-    return this.ethService.getTransactions(tHashes);
+    return {
+      transactions: await this.ethService.getTransactions(tHashes),
+    };
   }
 }

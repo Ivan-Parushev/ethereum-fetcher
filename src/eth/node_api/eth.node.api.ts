@@ -8,7 +8,7 @@ export interface Transaction {
   contractAddress: string | null; // the etherum address of the newly created contract if this transaction is contract creation
   logsCount: number; // number of log objects, which this transaction generated.
   input: string; // the hex encoding of the data send along with the transaction.
-  value: string; // the value transferred in wei
+  value: number; // the value transferred in wei
 }
 
 export interface TransactionResponse {
@@ -16,7 +16,7 @@ export interface TransactionResponse {
   id: number;
   result: {
     hash: string;
-    blockNumber?: number; // Only if a transaction has been mined
+    blockNumber?: string; // Only if a transaction has been mined
     blockHash?: string; // Only if a transaction has been mined
     timestamp?: number;
     confirmations: number;
