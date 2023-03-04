@@ -2,13 +2,13 @@ export interface Transaction {
   transactionHash: string; // the hex encoded transaction hash of the transaction
   transactionStatus: number; // the status of the transaction either 1 (success) or 0 (failure)
   blockHash: string; // the hex encoding of the hash of the block the transaction was included in
-  blockNumber: number; // the number of the block the transaction was included in
+  blockNumber: string; // the number of the block the transaction was included in
   from: string; // the etherum address of the transaction sender
   to: string | null; // the etherum address of the transaction receiver or null when its a contract creation transaction.
   contractAddress: string | null; // the etherum address of the newly created contract if this transaction is contract creation
   logsCount: number; // number of log objects, which this transaction generated.
   input: string; // the hex encoding of the data send along with the transaction.
-  value: number; // the value transferred in wei
+  value: string; // the value transferred in wei
 }
 
 export interface TransactionResponse {

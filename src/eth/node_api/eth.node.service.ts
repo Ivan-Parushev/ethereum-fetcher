@@ -49,13 +49,13 @@ export class EthNodeService {
       transactionHash: transationResponse.result.hash, // the hex encoded transaction hash of the transaction
       transactionStatus: parseInt(receiptResponse?.result.status, 16), // the status of the transaction either 1 (success) or 0 (failure)
       blockHash: transationResponse.result.blockHash, // the hex encoding of the hash of the block the transaction was included in
-      blockNumber: parseInt(transationResponse.result.blockNumber, 16), // the number of the block the transaction was included in
+      blockNumber: BigInt(transationResponse.result.blockNumber).toString(10), // the number of the block the transaction was included in
       from: transationResponse.result.from, // the etherum address of the transaction sender
       to: transationResponse.result.to || null, // the etherum address of the transaction receiver or null when its a contract creation transaction.
       contractAddress: receiptResponse?.result.contractAddress || null, // the etherum address of the newly created contract if this transaction is contract creation
       logsCount: receiptResponse?.result.logs?.length || 0, // number of log objects, which this transaction generated.
       input: transationResponse.result.input, // the hex encoding of the data send along with the transaction.
-      value: parseInt(transationResponse.result.value, 16), // the value transferred in wei
+      value: BigInt(transationResponse.result.value).toString(10), // the value transferred in wei
     };
   }
 
