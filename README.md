@@ -206,6 +206,18 @@ curl -H 'Content-Type: application/json' -H 'AUTH_TOKEN: ${tolen_value}' http://
 
 ## C4 diagrams of the application
 
+### C4 System Diagram
+
+![system diagram](./architecture_diagrams/lime_api_system.jpg)
+
+### C4 Container Diagram
+
+![container diagram](./architecture_diagrams/lime_api_container.jpg)
+
+### C4 Component Diagram
+
+![component diagram](./architecture_diagrams/lime_api_component.jpg)
+
 ## How would you improve the API? Reasoning around the design choices and tradeoffs
 
 This API is a perfect fit for the requirements. If the requirements changes some additions should be considered depending on the expected load and planned feature development.
