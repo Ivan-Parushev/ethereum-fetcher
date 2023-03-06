@@ -6,7 +6,7 @@ Your task is to create a REST API server that returns information for certain Et
 
 ## Endpoint: `/lime/eth/:rlphex`
 
-The server should handle a GET request on endpoint with path `/lime/eth/:rlphex`. 
+The server should handle a GET request on endpoint with path `/lime/eth/:rlphex`.
 
 It should have a single parameter `rlphex` - a hexadecimal representation of RLP encoded list of transaction hashes (Example requests for the Goerli network are provided below). The server should return a response in the following format:
 
@@ -14,7 +14,7 @@ It should have a single parameter `rlphex` - a hexadecimal representation of RLP
 {
 	transactions: [
 		{ // List of information about transactions
-			transactionHash: string, // the hex encoded transaction hash of the transaction	
+			transactionHash: string, // the hex encoded transaction hash of the transaction
 			transactionStatus: number, // the status of the transaction either 1 (success) or 0 (failure)
 			blockHash: string, // the hex encoding of the hash of the block the transaction was included in
 			blockNumber: number, // the number of the block the transaction was included in
@@ -211,8 +211,8 @@ curl -X GET http://127.0.0.1:{PORT}/lime/all
 
 - Intro to Ethereum concepts - node, tx, address, ether and wei - [https://ethereum.org/en/developers/docs/intro-to-ethereum/](https://ethereum.org/en/developers/docs/intro-to-ethereum/)
 - For access to ethereum Node **one of the following two.** Both of them have free versions:
-    - Infura: [https://www.infura.io/](https://www.infura.io/)
-    - Alchemy: [https://www.alchemy.com/](https://www.alchemy.com/)
+  - Infura: [https://www.infura.io/](https://www.infura.io/)
+  - Alchemy: [https://www.alchemy.com/](https://www.alchemy.com/)
 - RLP - [https://ethereum.org/en/developers/docs/data-structures-and-encoding/rlp/](https://ethereum.org/en/developers/docs/data-structures-and-encoding/rlp/)
 - Ethereum JSONRPC - [https://ethereum.org/en/developers/docs/apis/json-rpc/](https://ethereum.org/en/developers/docs/apis/json-rpc/)
 
@@ -240,7 +240,7 @@ The server should handle a POST request on an endpoint named `/lime/authenticate
 
 ```jsx
 {
-	token: string // The JWT token for the user
+  token: string; // The JWT token for the user
 }
 ```
 

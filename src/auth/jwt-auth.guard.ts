@@ -1,4 +1,4 @@
-import { ExecutionContext, Injectable } from '@nestjs/common';
+import { ExecutionContext, Injectable, UnauthorizedException } from '@nestjs/common';
 import { ExtractJwt } from 'passport-jwt';
 import { ConfigService } from '@nestjs/config';
 import { Reflector } from '@nestjs/core';
@@ -31,7 +31,7 @@ export class JwtAuthGuard extends AuthGuard('jwt') {
 
       if (decodedToken['exp'] < Date.now() / 1000) {
         // don't allow request with expired token
-        return false;
+        throw new UnauthorizedException();
       }
 
       request.user = { id: decodedToken['id'], username: decodedToken['username'] };
