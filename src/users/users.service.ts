@@ -13,4 +13,15 @@ export class UsersService {
   async findOne(username: string): Promise<User | undefined> {
     return await this.usersRepository.findOne({ where: { username } });
   }
+
+  async getMyTransactions(username: string): Promise<any> {
+    const { transactions } = await this.usersRepository.findOne({
+      where: { username },
+      relations: {
+        transactions: true,
+      },
+    });
+
+    return { transactions };
+  }
 }
