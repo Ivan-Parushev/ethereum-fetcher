@@ -9,6 +9,7 @@ import { AuthService } from './auth.service';
 import { LocalStrategy } from './local.strategy';
 import { JwtStrategy } from './jwt.strategy';
 import { UsersModule } from 'src/users/users.module';
+import { JWT_SECRET } from 'src/config.defaults';
 import { JwtAuthGuard } from './jwt-auth.guard';
 
 @Module({
@@ -19,7 +20,7 @@ import { JwtAuthGuard } from './jwt-auth.guard';
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => {
         return {
-          secret: configService.get<string>('JWT_SECRET', 'swordfish'),
+          secret: configService.get<string>('JWT_SECRET', JWT_SECRET),
           signOptions: { expiresIn: '600s' },
         };
       },
