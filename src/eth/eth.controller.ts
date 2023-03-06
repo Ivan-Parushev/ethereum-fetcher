@@ -1,7 +1,6 @@
-import { Controller, Get, Param, UseGuards } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { Context, ReqContext, AllowUnauthorized } from 'src/utils';
-import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { EthService } from './eth.service';
 import { decodeRlpHex } from './utils';
 
@@ -13,14 +12,13 @@ export class EthController {
   @Get('/eth/:rlphex')
   async getTransactions(@Param('rlphex') rlphex: string, @Context() ctx: ReqContext) {
     const tHashes = decodeRlpHex(rlphex);
-    console.log(ctx.user);
+
     return {
-      transactions: await this.ethService.getTransactions(tHashes),
+      transactions: await this.ethService.getTransactions(ctx, tHashes),
     };
   }
 
   @AllowUnauthorized()
-  @UseGuards(JwtAuthGuard)
   @Get('/all')
   async getAllTransactions() {
     return {
